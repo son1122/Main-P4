@@ -1,0 +1,118 @@
+.dashboard-view-grid {
+    display: grid;
+    grid-template-rows: auto auto 70vh auto;
+}
+
+.dashboard-slide-horizon {
+    display: inline-block;
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.grid28 {
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
+
+.employer-list-cont-waiter {
+    background-color: #fafafa;
+    height: 80vh;
+    overflow: scroll;
+}
+
+.employer-list-cont-chef {
+    background-color: #fafafa;
+    height: 80vh;
+    overflow: scroll;
+}
+
+.employer-list-cont-chef::-webkit-scrollbar {
+    display: none;
+}
+
+.employer-list-cont-waiter::-webkit-scrollbar {
+    display: none;
+}
+
+.employer-list-item {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ff2531;
+    color: #fff;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 0%;
+}
+
+.employer-list-item-label {
+    color: #252525;
+}
+
+.ingredient-item-cont {
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 80vh;
+}
+
+.ingredient-item-cont::-webkit-scrollbar {
+    display: none;
+}
+
+.ingredient-item-item {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 300px;
+    height: 130px;
+    background-color: #ff2531;
+    color: #fff;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    line-height: 5%;
+}
+
+.ingredient-item-item > p {
+    font-weight: bold;
+}
+
+.order-orderlist-cont {
+    background: #fafafa;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.order-orderlist-item {
+    /* border: red 1px solid; */
+    width: 400px;
+    height: 250px;
+    margin: 0 20px;
+    margin-top: 20px;
+    background-color: #ff2531;
+    color: #fff;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.order-orderlist-item-align {
+    margin-left: 2.5rem;
+    text-align: left;
+    width: 100%;
+}

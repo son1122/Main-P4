@@ -1,0 +1,65 @@
+.login-grid {
+    height: 70vh;
+    display: grid;
+    grid-template-rows: auto 25vh 10vh;
+    justify-content: center;
+    align-items: center;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.login-form-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-grid-cont {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-button-grid {
+    height: 7vh;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.sign-button {
+    margin-top: 5vh;
+}
+
+.login-form {
+    height: 100%;
+    width: 400px;
+    text-align: center;
+}
+
+.signup-btn:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.signup-btn {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: rgb(190, 190, 190);
+}
+
+.login-btn {
+    border: none;
+    height: 100%;
+    background-color: rgba(15, 14, 159, 1);
+    color: white;
+    font-size: 20px;
+}
+
+.login-btn:hover {
+    cursor: pointer;
+    opacity: 80%;
+}

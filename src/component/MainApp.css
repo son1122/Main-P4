@@ -1,0 +1,28 @@
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*and (max-device-width:1024px)*/
+@media only screen and (orientation: portrait) {
+    .main-app {
+        text-align: center;
+        background-color: rgba(15, 14, 159, 1);
+        display: grid;
+        grid-template-rows: 80vh 15vh;
+
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .main-app {
+        display: grid;
+        grid-template-columns: 90% auto;
+        text-align: center;
+        background-color: rgba(15, 14, 159, 1);
+    }
+}

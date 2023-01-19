@@ -1,0 +1,25 @@
+.not-found-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-text {
+    height: 300px;
+    width: 500px;
+    color: #ff2531;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-backlogin {
+    text-decoration: none;
+    color: #ff2531;
+    cursor: pointer;
+}
+
+.not-found-backlogin:hover {
+    opacity: 80%;
+    transition: 0.75s;
+}
