@@ -11,13 +11,16 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 function App() {
+
+
+
     const [login, setLogin] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         axios
-            .get("https://backend-sei-project-3.cyclic.app/auth/verify", {
+            .get("http://localhost:3010/customer/verify", {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {

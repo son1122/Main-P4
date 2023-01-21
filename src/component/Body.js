@@ -1,7 +1,7 @@
 // import "./Navbar.css";
 import './Body.css'
 import Dashboard from "./Dashboard";
-import Buy from "./Buy";
+import Buy from "./buy/Buy";
 import Profile from "./Profile/Profile";
 
 const Body = (props) => {

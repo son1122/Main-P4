@@ -7,7 +7,14 @@ import NotFound from "./NotFound/NotFound";
 import {useEffect, useState} from "react";
 
 const MainApp = (props) => {
-    const [view, setView] = useState(0)
+    const [view, setView] = useState(1)
+    useEffect(() => {
+        setView(JSON.parse(window.localStorage.getItem('view')));
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('view', view);
+    }, [view]);
     useEffect(() => {
     }, [props.login])
     return (
