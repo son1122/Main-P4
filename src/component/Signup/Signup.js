@@ -51,7 +51,10 @@ const Signup = () => {
                     headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
                 })
                 .then(function (response) {
-                    if (response.data.status == "signUp") {
+                    if(response.data.status=="Username has taken"){
+                        alert("Username already taken")
+                    }
+                    else if (response.data.status == "signUp") {
                         navigate("/login");
                     } else {
                         if (
@@ -63,6 +66,7 @@ const Signup = () => {
                             alert("error please try again");
                         }
                     }
+
                 })
                 .catch(function (error) {
                 });
