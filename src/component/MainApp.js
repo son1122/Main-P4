@@ -19,7 +19,7 @@ const MainApp = (props) => {
     }, [props.login])
     return (
         <div className="main-app">
-            {props.login ? <Body view={view}/> : <NotFound/>}
+            {props.login ? <Body view={view} setView={setView}/> : <NotFound/>}
             <Navbar setView={setView}/>
         </div>
     );

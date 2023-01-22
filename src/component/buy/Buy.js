@@ -2,7 +2,7 @@ import "./buy.css"
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const Buy = () => {
+const Buy = (props) => {
     const [buyView, setBuyView] = useState(0)
     const [year, setYear] = useState("")
     const [brand, setBrand] = useState("")
@@ -28,12 +28,15 @@ const Buy = () => {
                 model:model,
                 plate:plate,
                 province:province,
-                type:type,
+                type:parseInt(type),
             },{
                 headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
             })
             .then(res=>{
-
+                if(res.status==200){
+                    alert("Complete Transaction Insurance Price is "+res.data.price+" with "+Math.round((1-res.data.discount)*100)+" % Discount")
+                    props.setView(0)
+                }
             }).catch(e=>alert("error"))
     }
     // const

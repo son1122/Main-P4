@@ -165,7 +165,7 @@ export default function Location() {
                         />
                     );
                 });
-                console.log(tagSell);
+                // console.log(tagSell);
                 setDataSeller(tagSell);
             })
             .catch((e) => {
@@ -178,9 +178,9 @@ export default function Location() {
                 }
             )
             .then((resCustomer) => {
-                console.log(resCustomer.data);
+                // console.log(resCustomer.data);
                 let tagCust = resCustomer.data.map((dataCus, index) => {
-                    console.log(dataCus);
+                    // console.log(dataCus);
                     return (
                         <Customer
                             lat={dataCus.Location.lat}
@@ -229,6 +229,9 @@ export default function Location() {
     }, [dataSeller]);
     return (
         <div className={isLoading ? "summary-loading-center" : "grid28"}>
+            <h2 style={{color:"white"}}>
+                Location
+            </h2>
             {isLoading ? (
                 <GridLoader
                     color={"#ff2531"}

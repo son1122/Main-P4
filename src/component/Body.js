@@ -8,7 +8,7 @@ const Body = (props) => {
     return (
         <div className={"body"}>
             {props.view == 0 && <Dashboard/>}
-            {props.view == 1 && <Buy/>}
+            {props.view == 1 && <Buy setView={props.setView}/>}
             {props.view == 2 && <Profile/>}
         </div>
     );
