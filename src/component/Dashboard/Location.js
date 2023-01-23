@@ -38,13 +38,13 @@ const Location = () => {
 
     const onClick = (e) => {
         // avoid directly mutating state
-        console.log(clicks)
+        // console.log(clicks)
         setClicks([...clicks, e.latLng]);
     };
 
     const onIdle = (m) => {
-        console.log("onIdle");
-        console.log(clicks)
+        // console.log("onIdle");
+        // console.log(clicks)
         setZoom(m.getZoom());
         setCenter(m.getCenter().toJSON());
     };

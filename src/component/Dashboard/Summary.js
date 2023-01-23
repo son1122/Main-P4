@@ -58,7 +58,7 @@ const Summary = (props) => {
             .then((resu) => {
                 let i = 0;
                 let price = 0;
-                console.log(resu);
+                // console.log(resu);
                 let data = resu.data.map((name, index) => {
                     for (let x = 0; x < name.MenuItems.length; x++) {
                         i += 1;

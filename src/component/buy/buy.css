@@ -1,25 +1,29 @@
-.buy-grid{
+.buy-grid {
     padding: 5%;
     display: grid;
     grid-template-rows: 10% 75vh;
 
 }
-.buy-grid-icon{
+
+.buy-grid-icon {
     display: grid;
     display: grid;
     grid-template-columns: auto auto auto auto;
 
 }
-.buy-grid-icon button{
+
+.buy-grid-icon button {
     background-color: white;
     margin-left: 10px;
     margin-right: 10px;
 }
-.buy-body{
+
+.buy-body {
     background-color: white;
     margin: 10px;
     padding-top: 3%;
 }
+
 .buy-scroll {
     overflow: scroll;
     display: flex;

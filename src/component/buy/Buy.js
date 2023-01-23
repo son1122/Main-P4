@@ -10,34 +10,34 @@ const Buy = (props) => {
     const [carYearData, setCarYearData] = useState()
     const [carBrandData, setCarBrandData] = useState()
     const [carModelData, setCarModelData] = useState()
-    const [sex,setSex]=useState("")
-    const [capital,setCapital]=useState("")
-    const [family,setFamily]=useState("")
-    const [plate,setPlate]=useState("")
-    const [province,setProvince]=useState("")
-    const [type,setType]=useState("")
-    const buyCar =()=>{
-        if(province==""||plate==""||type==""){
+    const [sex, setSex] = useState("")
+    const [capital, setCapital] = useState("")
+    const [family, setFamily] = useState("")
+    const [plate, setPlate] = useState("")
+    const [province, setProvince] = useState("")
+    const [type, setType] = useState("")
+    const buyCar = () => {
+        if (province == "" || plate == "" || type == "") {
             alert("Pleas fill Plate and Province Data and type")
             return
         }
         axios
             .post(`https://good-puce-kitten-sari.cyclic.app/customer/newinsure`, {
-                year:year,
-                brand:brand,
-                model:model,
-                plate:plate,
-                province:province,
-                type:parseInt(type),
-            },{
-                headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
+                year: year,
+                brand: brand,
+                model: model,
+                plate: plate,
+                province: province,
+                type: parseInt(type),
+            }, {
+                headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
-            .then(res=>{
-                if(res.status==200){
-                    alert("Complete Transaction Insurance Price is "+res.data.price+" with "+Math.round((1-res.data.discount)*100)+" % Discount")
+            .then(res => {
+                if (res.status == 200) {
+                    alert("Complete Transaction Insurance Price is " + res.data.price + " with " + Math.round((1 - res.data.discount) * 100) + " % Discount")
                     props.setView(0)
                 }
-            }).catch(e=>alert("error"))
+            }).catch(e => alert("error"))
     }
     // const
     useEffect(() => {
@@ -66,9 +66,9 @@ const Buy = (props) => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
-                console.log(resu);
+                // console.log(resu);
                 let data = resu.data.map((name, index) => {
-                    console.log(name.year)
+                    // console.log(name.year)
                     return (
                         <option value={name.year} key={index}>
                             {name.year}
@@ -84,9 +84,9 @@ const Buy = (props) => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
-                console.log(resu);
+                // console.log(resu);
                 let data = resu.data.map((name, index) => {
-                    console.log(name.brand)
+                    // console.log(name.brand)
                     return (
                         <option value={name.brand} key={index}>
                             {name.brand}
@@ -102,9 +102,9 @@ const Buy = (props) => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
-                console.log(resu);
+                // console.log(resu);
                 let data = resu.data.map((name, index) => {
-                    console.log(name.model)
+                    // console.log(name.model)
                     return (
                         <option value={name.model} key={index}>
                             {name.model}
@@ -127,7 +127,7 @@ const Buy = (props) => {
                 {buyView == 0 && <div className={""}>
                     <h1>Car Insurance Type</h1>
                     <select name="<OrderID>" id="OrderID" onChange={handleChangeSelectType}>
-                        <option value="" selected disabled hidden>
+                        <option value={type} selected disabled hidden>
                             Please Select
                         </option>
                         <option value={1} key={1}>
@@ -141,17 +141,17 @@ const Buy = (props) => {
                         </option>
                     </select>
                     <p>Car Plate</p>
-                    <input type={"text"} placeholder={"Plate Number"}  onChange={(e) => {
+                    <input type={"text"} placeholder={"Plate Number"} value={plate} onChange={(e) => {
                         setPlate(e.target.value);
                     }}/>
                     <p>Province</p>
-                    <input type={"text"} placeholder={"Province"} onChange={(e) => {
+                    <input type={"text"} placeholder={"Province"} value={province} onChange={(e) => {
                         setProvince(e.target.value);
                     }}/>
                     <h2>Car Data</h2>
                     {(buyView == 0) && <div>
                         <h3>Please Select Car Year</h3>
-                        <select name="<OrderID>" id="OrderID" onChange={handleChangeSelectYear}>
+                        <select name="<OrderID>" id="OrderID" value={year} onChange={handleChangeSelectYear}>
                             <option value="" selected disabled hidden>
                                 Please Select
                             </option>
@@ -160,7 +160,7 @@ const Buy = (props) => {
                     </div>}
                     {(buyView == 0 & year != "") ? <div>
                         <h3>Please Select Car Brand</h3>
-                        <select name="<OrderID>" id="OrderID" onChange={handleChangeSelectBrand}>
+                        <select name="<OrderID>" id="OrderID" value={brand} onChange={handleChangeSelectBrand}>
                             <option value="" selected disabled hidden>
                                 Please Select
                             </option>
@@ -169,7 +169,7 @@ const Buy = (props) => {
                     </div> : <></>}
                     {(buyView == 0 & brand != "") ? <div>
                         <h3>Please Select Car Model</h3>
-                        <select name="<OrderID>" id="OrderID" onChange={handleChangeSelectModel}>
+                        <select name="<OrderID>" id="OrderID" value={model} onChange={handleChangeSelectModel}>
                             <option value="" selected disabled hidden>
                                 Please Select
                             </option>
@@ -177,39 +177,39 @@ const Buy = (props) => {
                         </select>
                     </div> : <></>}
                     {(buyView == 0 & model != "") ? <div>
-                    <h2>personal data</h2>
-                    <form>
-                        <h4>SELECT GENDER</h4>
-                        <input type="radio" name="gender" id="male" onClick={()=>setSex("man")}/>
-                        <label htmlFor="male">Male</label>
-                        <input type="radio" name="gender" id="female" onClick={()=>setSex("female")}/>
-                        <label htmlFor="female">Female</label>
-                        <input type="radio" name="gender" id="female" onClick={()=>setSex("other")}/>
-                        <label htmlFor="female">LGBTQ</label>
-                        <br/>
-                        <h4>Capital</h4>
-                        <input type="radio" name="capital" id="male" onClick={()=>setCapital("true")}/>
-                        <label htmlFor="male">Drive in Capital</label>
-                        <input type="radio" name="capital" id="female" onClick={()=>setCapital("false")}/>
-                        <label htmlFor="female">Out of Town</label>
-                        <br/>
-                        <h4>Family</h4>
-                        <input type="radio" name="family" id="male"  onClick={()=>setFamily("single")}/>
-                        <label htmlFor="male">Single</label>
-                        <input type="radio" name="family" id="female" onClick={()=>setFamily("marry")}/>
-                        <label htmlFor="female">Marry</label>
-                        <input type="radio" name="family" id="female" onClick={()=>setFamily("kid")}/>
-                        <label htmlFor="female">Marry with Kids</label>
-                        <br/>
-                        <br/>
-                    </form>
+                        <h2>personal data</h2>
+                        <form>
+                            <h4>SELECT GENDER</h4>
+                            <input type="radio" name="gender" id="male" onClick={() => setSex("man")}/>
+                            <label htmlFor="male">Male</label>
+                            <input type="radio" name="gender" id="female" onClick={() => setSex("female")}/>
+                            <label htmlFor="female">Female</label>
+                            <input type="radio" name="gender" id="female" onClick={() => setSex("other")}/>
+                            <label htmlFor="female">LGBTQ</label>
+                            <br/>
+                            <h4>Capital</h4>
+                            <input type="radio" name="capital" id="male" onClick={() => setCapital("true")}/>
+                            <label htmlFor="male">Drive in Capital</label>
+                            <input type="radio" name="capital" id="female" onClick={() => setCapital("false")}/>
+                            <label htmlFor="female">Out of Town</label>
+                            <br/>
+                            <h4>Family</h4>
+                            <input type="radio" name="family" id="male" onClick={() => setFamily("single")}/>
+                            <label htmlFor="male">Single</label>
+                            <input type="radio" name="family" id="female" onClick={() => setFamily("marry")}/>
+                            <label htmlFor="female">Marry</label>
+                            <input type="radio" name="family" id="female" onClick={() => setFamily("kid")}/>
+                            <label htmlFor="female">Marry with Kids</label>
+                            <br/>
+                            <br/>
+                        </form>
                     </div> : <></>}
-                    {(buyView == 0 & family != ""& capital!=""&sex!="") ? <div>
+                    {(buyView == 0 & family != "" & capital != "" & sex != "") ? <div>
                         <button onClick={buyCar}>Submit</button>
                         <br/>
                         <br/>
                         <br/>
-                    </div>:<></>}
+                    </div> : <></>}
                 </div>}
 
                 {buyView == 1 && <div>Health Insurance</div>}

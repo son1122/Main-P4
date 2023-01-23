@@ -53,7 +53,7 @@ const Profile = () => {
                     lastname: lastname,
                 })
                 .then(function (response) {
-                    console.log(response.data.status);
+                    // console.log(response.data.status);
                     if (response.data.status == "signUp") {
                         navigate("/login");
                     } else {
@@ -68,7 +68,7 @@ const Profile = () => {
                     }
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    // console.log(error);
                 });
         }
     }
@@ -98,7 +98,7 @@ const Profile = () => {
                 }
             )
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 navigate("/login");
             });
     };
@@ -108,7 +108,7 @@ const Profile = () => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 setEmail(res.data.email);
                 setFirstname(res.data.firstname);
                 setLastname(res.data.lastname);
@@ -116,7 +116,7 @@ const Profile = () => {
                 setPhone(res.data.phone);
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
             });
     }, []);
     return (

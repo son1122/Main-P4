@@ -100,7 +100,7 @@ const Menu = () => {
                 }
             )
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 // setData(data.value.title= res.data.name)
                 const newData = {
                     value: {
@@ -184,16 +184,16 @@ const Menu = () => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
-                console.log(resu);
+                // console.log(resu);
                 let data = resu.data.map((name, index) => {
-                    console.log(name);
+                    // console.log(name);
                     return (
                         <option value={name.id} key={index}>
                             {name.name}
                         </option>
                     );
                 });
-                console.log(data);
+                // console.log(data);
                 setMenuitem(data);
             });
         // getData()

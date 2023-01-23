@@ -32,7 +32,7 @@ const Word = () => {
                 {"value": 5, "name": "Sonic"},
                 {"value": 5, "name": "Water"}]))
             .catch((error) => {
-                console.log('fetch data failed', error);
+                // console.log('fetch data failed', error);
             });
     };
     const config = {

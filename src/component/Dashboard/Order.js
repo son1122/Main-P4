@@ -20,7 +20,7 @@ const Order = () => {
             })
             .then((resu) => {
                 let dataRes = resu.data.map((name, index) => {
-                    console.log(resu.data);
+                    // console.log(resu.data);
                     return (
                         <div className="order-orderlist-item">
                             <h3 className="order-orderlist-item-align">

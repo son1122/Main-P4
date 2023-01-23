@@ -19,9 +19,9 @@ const Seller = () => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
-                console.log(resu);
+                // console.log(resu);
                 let dataRes = resu.data.map((name, index) => {
-                    console.log(name);
+                    // console.log(name);
                     return (
                         <div
                             className="seller-item-cont"

@@ -20,7 +20,7 @@ const Login = (props) => {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 let token = res.data;
                 localStorage.setItem("jwt", token);
                 // props.setLogin(true);

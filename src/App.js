@@ -13,7 +13,6 @@ import axios from "axios";
 function App() {
 
 
-
     const [login, setLogin] = useState(false);
 
     const navigate = useNavigate();
@@ -46,7 +45,7 @@ function App() {
             {/*<Body/>*/}
             {/*<Navbar/>*/}
         </div>
-  );
+    );
 }
 
 export default App;

@@ -21,7 +21,7 @@ const Customer = () => {
             .then((resu) => {
                 console.log(resu);
                 let dataRes = resu.data.map((name, index) => {
-                    console.log(name);
+                    // console.log(name);
                     return (
                         <div className="customer-item-container">
                             <h3>

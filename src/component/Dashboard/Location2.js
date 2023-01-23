@@ -229,7 +229,7 @@ export default function Location() {
     }, [dataSeller]);
     return (
         <div className={isLoading ? "summary-loading-center" : "grid28"}>
-            <h2 style={{color:"white"}}>
+            <h2 style={{color: "white"}}>
                 Location
             </h2>
             {isLoading ? (
