@@ -44,7 +44,7 @@ const Profile = () => {
     function validateForm() {
         if (validateEmail() && validatePassword()) {
             axios
-                .post(`http://localhost:3010/customer/edit`, {
+                .post(`https://good-puce-kitten-sari.cyclic.app/customer/edit`, {
                     username: username,
                     password: password,
                     email: email,
@@ -84,7 +84,7 @@ const Profile = () => {
         // validatePassword()
         axios
             .put(
-                `http://localhost:3010/customer/edit`,
+                `https://good-puce-kitten-sari.cyclic.app/customer/edit`,
                 {
                     username: username,
                     password: password,
@@ -104,7 +104,7 @@ const Profile = () => {
     };
     useEffect(() => {
         axios
-            .get(`http://localhost:3010/customer`, {
+            .get(`https://good-puce-kitten-sari.cyclic.app/customer`, {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {
@@ -230,7 +230,7 @@ const Profile = () => {
                         className="signup-form-btn1"
                         type="button"
                         onClick={() => {
-                            axios.delete("http://localhost:3010/customer/user", {
+                            axios.delete("https://good-puce-kitten-sari.cyclic.app/customer/user", {
                                 headers: {
                                     Authorization: `Bearer ${localStorage.getItem("jwt")}`,
                                 },

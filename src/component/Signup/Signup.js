@@ -42,7 +42,7 @@ const Signup = () => {
     function validateForm() {
         if (validateEmail() && validatePassword()) {
             axios
-                .post(`http://localhost:3010/customer/signup`, {
+                .post(`https://good-puce-kitten-sari.cyclic.app/customer/signup`, {
                     username: username,
                     password: password,
                     email: email,

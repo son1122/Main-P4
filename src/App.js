@@ -20,7 +20,7 @@ function App() {
 
     useEffect(() => {
         axios
-            .get("http://localhost:3010/customer/verify", {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/verify", {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {

@@ -22,7 +22,7 @@ const Buy = (props) => {
             return
         }
         axios
-            .post(`http://localhost:3010/customer/newinsure`, {
+            .post(`https://good-puce-kitten-sari.cyclic.app/customer/newinsure`, {
                 year:year,
                 brand:brand,
                 model:model,
@@ -62,7 +62,7 @@ const Buy = (props) => {
     // Car Year
     useEffect(() => {
         const select = axios
-            .get("http://localhost:3010/customer/getcaryear", {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/getcaryear", {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
@@ -80,7 +80,7 @@ const Buy = (props) => {
     }, [])
     useEffect(() => {
         const select = axios
-            .get("http://localhost:3010/customer/getcarmodel/" + year, {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/getcarmodel/" + year, {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
@@ -98,7 +98,7 @@ const Buy = (props) => {
     }, [year])
     useEffect(() => {
         const select = axios
-            .get("http://localhost:3010/customer/getcarmodel/" + year + "/" + brand, {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/getcarmodel/" + year + "/" + brand, {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {

@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [list,setList]=useState()
     useEffect(() => {
         const select = axios
-            .get("http://localhost:3010/customer/dashboarddata/", {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/dashboarddata/", {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {
@@ -48,7 +48,7 @@ const Dashboard = () => {
                 });
         let claimCost=0
         const claim = axios
-            .get("http://localhost:3010/customer/claim/", {
+            .get("https://good-puce-kitten-sari.cyclic.app/customer/claim/", {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((resu) => {

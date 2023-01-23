@@ -16,7 +16,7 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:3010/customer/login", formData, {
+            .post("https://good-puce-kitten-sari.cyclic.app/customer/login", formData, {
                 headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
             })
             .then((res) => {
