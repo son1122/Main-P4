@@ -23,7 +23,7 @@ const Dashboard = () => {
                     return (
                         <div className="customer-db-third-customerorders-detail-cont-2">
                             <div className="customer-db-third-customerorders-detail">
-                                {index+1}
+                                {name.id}
                             </div>
                             <div className="customer-db-third-customerorders-detail">
                                 {name.insuranceType}
@@ -84,7 +84,7 @@ const Dashboard = () => {
                         <h2>Insurance</h2>
                         <div className="customer-db-third-customerorders-label-menu">
                             <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>No.</h3>
+                                <h3>ID.</h3>
                             </div>
                             <div className="customer-db-third-customerorders-label-menu-cont">
                                 <h3>Type</h3>
