@@ -68,46 +68,20 @@ const Dashboard = () => {
                 <div className={"dashboard-summary"}>
                     <div style={{display:"grid",gridTemplateColumns:"50% 50%"}}>
                         <div>
-                            <h2>Total Insurance</h2>
+                            <h2>Total Insurance price</h2>
                             <h3>{numInsure}</h3>
                         </div>
                         <div>
-                            <h2>Total Paid</h2>
+                            <h2>Total Sale</h2>
                             <h3>{paidInsure}</h3>
                         </div>
+
                     </div>
                     <div>
-                        <h2>Total Claim Cost Dhipaya paid for you</h2>
-                        <h3>{claimInsure}</h3>
-                    </div>
-                    <div>
-                        <h2>Insurance</h2>
-                        <div className="customer-db-third-customerorders-label-menu">
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>No.</h3>
-                            </div>
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>Type</h3>
-                            </div>
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>Price</h3>
-                            </div>
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>Plate</h3>
-                            </div>
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>Province</h3>
-                            </div>
-                            <div className="customer-db-third-customerorders-label-menu-cont">
-                                <h3>End Date</h3>
-                            </div>
-                        </div>
-                        <div className="customer-db-third-customerorders-detail-cont">
-                            {list}
-                        </div>
+
                     </div>
                 </div>
-                <Location/>
+
 
             </div>
         </div>

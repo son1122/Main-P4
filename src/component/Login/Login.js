@@ -16,15 +16,24 @@ const Login = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:3010/customer/login", formData, {
-                headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
+            .post("http://127.0.0.1:8000/api/login2", {
+                username:formData.username,
+                password:formData.password
+            }, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
             })
             .then((res) => {
                 console.log(res)
-                let token = res.data;
-                localStorage.setItem("jwt", token);
-                // props.setLogin(true);
-                navigate("/");
+                if(res.status==200){
+                    let token = res.data.id;
+                    localStorage.setItem("jwt", token);
+                    // props.setLogin(true);
+                    navigate("/");
+                }else {
+                    alert("Usernam and Password Notmatch")
+                }
             })
             .catch((err) => {
                 alert("Usernam and Password Notmatch")
@@ -71,6 +80,13 @@ const Login = (props) => {
                     type={"button"}
                     onClick={handleSubmit}
                     value={"Login"}
+                />
+                <br/>
+                <input
+                    className="login-btn"
+                    type={"button"}
+                    onClick={()=>navigate("/")}
+                    value={"Buy Page"}
                 />
             </div>
         </div>

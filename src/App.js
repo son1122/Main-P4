@@ -14,23 +14,12 @@ function App() {
 
 
 
-    const [login, setLogin] = useState(false);
+    const [login, setLogin] = useState(true);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios
-            .get("http://localhost:3010/customer/verify", {
-                headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
-            })
-            .then((res) => {
-                if (res.status == 200) {
-                    setLogin(true);
-                } else {
-                    setLogin(false);
-                    navigate("/login");
-                }
-            });
+
 
     }, [login]);
     return (

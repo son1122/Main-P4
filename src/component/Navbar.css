@@ -50,7 +50,7 @@
 
     .navbar-grid {
         display: grid;
-        grid-template-rows: auto auto auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto auto auto;
         background-color: #fff;
         /* border-color: #61dafb; */
         border-width: medium;

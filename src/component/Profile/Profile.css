@@ -1,4 +1,4 @@
-
+.body{}
 .main-cont1 {
     height: 98vh;
     display: flex;
@@ -41,7 +41,7 @@
     justify-content: center;
 }
 
-.signup-form-btn1 {
+.button {
     /* height: 30px; */
     border: none;
     height: 100%;

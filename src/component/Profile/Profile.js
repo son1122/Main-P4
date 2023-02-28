@@ -2,7 +2,8 @@ import "./Profile.css";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
-
+import {use} from "i18next";
+var qs = require('qs');
 const Profile = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -12,6 +13,17 @@ const Profile = () => {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const navigate = useNavigate();
+    const [profilePage, setProfilePage] = useState(1);
+    const [address, setAddress] = useState("");
+    const [subDistrict, setSubDistrict] = useState("");
+    const [district, setDistrict] = useState("");
+    const [customerProvince, setCustomerProvince] = useState("");
+    const [zip, setZip] = useState("");
+    const [province, setProvince] = useState();
+    const [govermentId, setGovermentId] = useState();
+    const [prefix, setPrefix] = useState();
+    const [form, setForm] = useState({});
+    const [packageId, setPackageId] = useState();
 
     function validateEmail() {
         const regex =
@@ -74,7 +86,29 @@ const Profile = () => {
     }
 
     // admin,password,owner@mail.com,000-000-0000
+    const getProfile = () => {
+        axios.post("http://localhost:8085/agent/profile", {
+            auth:localStorage.getItem("jwt")
+        },{
+            headers: {
+                Authorization: localStorage.getItem("jwt"),
+                    'Content-Type': 'application/x-www-form-urlencoded'
 
+            }}).then(res => {
+            // get profile data
+            console.log(res.data)
+        })
+    }
+    const Login = () => {
+        axios.post("http://localhost:8080/agent/login", {
+            username: username,
+            password: password
+        }).then(res => {
+            // id
+            console.log(res.data)
+            localStorage.setItem("id", res.data.id)
+        })
+    }
     const signUp = (e) => {
         e.preventDefault();
         validateForm();
@@ -92,10 +126,12 @@ const Profile = () => {
                     phone: phone,
                     firstname: firstname,
                     lastname: lastname,
-                },
-                {
-                    headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
-                }
+                },{
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                        'Content-Type': 'application/x-www-form-urlencoded'
+
+                    }}
             )
             .then((res) => {
                 console.log(res);
@@ -104,143 +140,178 @@ const Profile = () => {
     };
     useEffect(() => {
         axios
-            .get(`http://localhost:3010/customer`, {
-                headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`},
-            })
+            .post(`http://127.0.0.1:8000/api/getdata`, {
+                jwt : localStorage.getItem("jwt")
+            },{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                    'Content-Type': 'application/x-www-form-urlencoded'
+
+                }})
             .then((res) => {
-                console.log(res)
-                setEmail(res.data.email);
-                setFirstname(res.data.firstname);
-                setLastname(res.data.lastname);
-                setUsername(res.data.username);
-                setPhone(res.data.phone);
+                console.log(res.data)
+                setUsername(res.data.username)
+                setFirstname(res.data.name)
+                setLastname(res.data.lastname)
+                setEmail(res.data.email)
+                setPhone(res.data.phone)
+                setPrefix(res.data.prefix)
+                setAddress(res.data.address)
+                setProvince(res.data.province)
+                setGovermentId(res.data.govermentId)
+                setSubDistrict(res.data.subDistrict)
+                setDistrict(res.data.district)
+                setZip(res.data.zip)
+                setPackageId(res.data.packageId)
+                // "id": 29,
+                //     "username": "8hnDYXoT",
+                //     "password": "$2y$10$l.W9A83h0kvWiBlEddxGrO5K3rN9I3Z.gMfePqUCIusTjdFNUeeFa",
+                //     "name": "wongsatorn",
+                //     "lastname": "norrasing",
+                //     "prefix": "mr.",
+                //     "address": "140/164 monthaienthong village soi krathumlom 15",
+                //     "subDistrict": "bkk",
+                //     "district": "bkk",
+                //     "province": "nakhonphathom",
+                //     "zip": "73220",
+                //     "phone": "0988896458",
+                //     "email": "wongsatorn.n@hotmail.com",
+                //     "registerId": "1222",
+                //     "govermentId": "112222",
+                //     "dateRegister": "2022-02-28",
+                //     "packageId": null,
             })
             .catch((err) => {
                 console.log(err);
             });
     }, []);
     return (
-        <div className="main-cont1">
-            <div className="reg-form-cont1">
-                <div className="signup-form-header1">
-                    <h2>Profile</h2>
-                </div>
-                {/* <form onSubmit={signUp}> */}
-                <form className="signup-form1">
-                    <h4 className="signup-form-lables">First Name : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="firstname"
-                        defaultValue={firstname}
-                        onChange={(e) => {
-                            setFirstname(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Last Name : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="lastname"
-                        placeholder="Last Name"
-                        defaultValue={lastname}
-                        onChange={(e) => {
-                            setLastname(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Username : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="username"
-                        placeholder=" Username"
-                        defaultValue={username}
-                        onChange={(e) => {
-                            setUsername(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Password : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="password"
-                        placeholder=" Password"
-                        onChange={(e) => {
-                            setPassword(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Confirm Pass : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="confirmPassword"
-                        placeholder=" ConfirmPassword"
-                        onChange={(e) => {
-                            setConfirmPassword(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Email : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="email"
-                        placeholder=" Email"
-                        defaultValue={email}
-                        onChange={(e) => {
-                            setEmail(e.target.value);
-                        }}
-                    />
-                    <h4 className="signup-form-lables">Phone Number : </h4>
-                    <input
-                        className="signup-form-inputs"
-                        type="text"
-                        name="phone"
-                        defaultValue={phone}
-                        placeholder=" Phone"
-                        onChange={(e) => {
-                            setPhone(e.target.value);
-                        }}
-                    />
-                    <br></br>
-                </form>
-                <div
-                    className="return-to-login-btn"
-                    onClick={() => navigate("/login")}
-                >
-                    Return to Home Website
-                </div>
-                <div style={{display: "grid", gridTemplateColumns: "auto auto auto"}}>
-                    <input
-                        className="signup-form-btn1"
-                        type="button"
-                        onClick={edit}
-                        value="Edit"
-                    />
+        <div style={{margin: "5%", backgroundColor: "white"}}>
+            {profilePage == 1 ?
+                <div>
+                    <br/>
+                    <h1>User Detail</h1>
+                    <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10%"}}>
+                        <p>Username</p>
+                        <input value={username} name={"username"} onChange={(e)=>{setUsername(e.target.value)}}/>
+                        <p>Password</p>
+                        <input onChange={(e)=>{setPassword(e.target.value)}}/>
+                        <p>Email</p>
+                        <input value={email} readOnly={true} name={'lastLogin'}/>
 
-                    <input
-                        className="signup-form-btn1"
-                        type={"button"}
-                        onClick={() => {
-                            localStorage.removeItem("jwt");
-                            navigate("/login");
-                        }}
-                        value="Logout"
-                    ></input>
-                    <input
-                        className="signup-form-btn1"
-                        type="button"
-                        onClick={() => {
-                            axios.delete("http://localhost:3010/customer/user", {
-                                headers: {
-                                    Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-                                },
+                    </div>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        padding: "1%",
+                        paddingLeft: "30%",
+                        paddingRight: "30%",
+                        marginBottom: "3%"
+                    }}>
+                        <button className={"button"} onClick={() => {
+                            setProfilePage(1)
+                        }}>User Detail
+                        </button>
+                        <button className={"button"} style={{marginLeft: "3%"}} onClick={() => {
+                            setProfilePage(2)
+                        }
+                        }>Profile Detail
+                        </button>
+                        <button className={"button"} style={{marginTop: "3%"}} onClick={()=>{
+                            var data = qs.stringify({
+                                auth : localStorage.getItem("jwt"),
+                                username:username,
+                                password:password
                             });
-                            // 2,Jane,Doe,022-222-2222,janedoe@mail.com,janedoe,1234,2022-12-30 16:38:57.656000 +00:00,2022-12-30 16:38:57.656000 +00:00
-                        }}
-                        value="Delete"
-                    />
+                            axios
+                                .post(`http://localhost:8085/agent/logindata/edit`,{
+                                    auth : localStorage.getItem("jwt"),
+                                    username:username,
+                                    password:password
+                                },{
+                                    headers: {
+                                        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+
+                                    }}).then(
+
+                            )
+
+                        }
+                        }>Edit</button>
+                        <button className={"button"} style={{marginTop: "3%", marginLeft: "3%"}} onClick={()=>{
+                        localStorage.setItem("jwt",null)
+                            navigate("/login")
+                        }
+                        }>Logout</button>
+                    </div>
                 </div>
-            </div>
+                :
+                <div>
+                    <h1>Profile</h1>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                        margin: "1%",
+                        marginTop: "3%",
+                        padding: "3%"
+                    }}>
+                        <p>Prefix</p>
+                        <input  type={"text"} value={prefix} name={"prefix"} onChange={(e)=>{setPrefix(e.target.value)}}/>
+                        <p>First Name</p>
+                        <input value={firstname} name={"name"} onChange={(e)=>{
+                        setFirstname(e.target.value)
+                        }}/>
+                        <p>Last Name</p>
+                        <input value={lastname} onChange={(e)=>{setLastname(e.target.value)}}/>
+                        <p>Phone</p>
+                        <input value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
+                        <p>Email</p>
+                        <input value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                        <p>Address</p>
+                        <input value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
+                        <p>Sub District</p>
+                        <input value={subDistrict} onChange={(e)=>{setSubDistrict(e.target.value)}}/>
+                        <p>Sub District</p>
+                        <input value={subDistrict} onChange={(e)=>{setSubDistrict(e.target.value)}}/>
+                        <p>District</p>
+                        <input value={district} onChange={(e)=>{setDistrict(e.target.value)}}/>
+                        <p>Province</p>
+                        <input value={province} onChange={(e)=>{setProvince(e.target.value)}}/>
+                        <p>ZIP</p>
+                        <input value={zip} onChange={(e)=>{setZip(e.target.value)}}/>
+                        <p>Phone</p>
+                        <input value={phone} onChange={(e)=>{setPhone(e.target.value)}}/>
+                        <p>Package ID</p>
+                        <input value={packageId} onChange={(e)=>{setPackageId(e.target.value)}}/>
+                        <p>Goverment ID</p>
+                        <input value={govermentId} onChange={(e)=>{setGovermentId(e.target.value)}}/>
+                    </div>
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        padding: "1%",
+                        paddingLeft: "30%",
+                        paddingRight: "30%",
+                        marginBottom: "3%"
+                    }}>
+                        <button className={"button"} onClick={() => {
+                            setProfilePage(1)
+                        }}>User Detail
+                        </button>
+                        <button className={"button"} style={{marginLeft: "3%"}} onClick={() => {
+                            setProfilePage(2)
+                        }
+                        }>Profile Detail
+                        </button>
+                        <button className={"button"} style={{marginTop: "3%"}}>Edit</button>
+                        <button className={"button"} onClick={()=>{
+                            localStorage.setItem("jwt",null)
+                            navigate("/login")
+                        }} style={{marginTop: "3%", marginLeft: "3%"}}>Logout</button>
+                    </div>
+                </div>
+            }
         </div>
     );
 };

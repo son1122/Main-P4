@@ -6,13 +6,13 @@ const Navbar = (props) => {
             <div className={"navbar-grid"}>
                 <p></p>
                 <p></p>
-                <div className="navbar-item-cont">
-                    <div>
-                        <img src="https://cdn-icons-png.flaticon.com/512/6821/6821002.png"
-                             onClick={() => props.setView(0)}></img>
-                        <p className={"hide-portrait"}>Dashboard</p>
-                    </div>
-                </div>
+                {/*<div className="navbar-item-cont">*/}
+                {/*    <div>*/}
+                {/*        <img src="https://cdn-icons-png.flaticon.com/512/6821/6821002.png"*/}
+                {/*             onClick={() => props.setView(0)}></img>*/}
+                {/*        <p className={"hide-portrait"}>Dashboard</p>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="navbar-item-cont">
                     <div>
                         <img src="https://cdn-icons-png.flaticon.com/512/2603/2603735.png"
